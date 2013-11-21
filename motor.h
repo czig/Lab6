@@ -12,6 +12,7 @@ void moveLeftWheelForward(void);
 void moveLeftWheelBack(void);
 void moveRightWheelForward(void);
 void moveRightWheelBack(void);
-
+void stopLeftWheel(void);
+void stopRightWheel(void);
 
 #endif /* MOTOR_H_ */

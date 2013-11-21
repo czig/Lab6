@@ -65,3 +65,36 @@ void moveRightWheelBack(void)
 	TA1CTL |= MC0;
 	__delay_cycles(1000);
 }
+
+
+void stopLeftWheel(void)
+{
+	//P1DIR |= BIT1|BIT2;
+	//P1SEL |= BIT1|BIT2;
+	TA0CTL &= ~(MC1|MC0);
+	//TA0CTL |= TACLR;
+	//TA0CTL |= TASSEL1;
+	//TACCR0 = 100;
+	//TACCR1 = 50;
+	TA0CCTL0 |= OUTMOD_5;         //Output as specified by Out (cleared in next line - output is zero)
+	TA0CCTL1 |= OUTMOD_5;         //Reset mode
+	//TACCTL1 &= ~OUT;
+	TA0CTL |= MC0;
+	__delay_cycles(1000);
+}
+
+void stopRightWheel(void)
+{
+	//P2DIR |= BIT0|BIT1;
+	//P2SEL |= BIT0|BIT1;
+	TA1CTL &= ~(MC1|MC0);
+	//TA1CTL |= TACLR;
+	//TA1CTL |= TASSEL1;
+	//TACCR0 = 100;
+	//TACCR1 = 50;
+	TA1CCTL0 |= OUTMOD_5;
+	TA1CCTL1 |= OUTMOD_5;
+	//TACCTL1 &= ~OUT;
+	TA1CTL |= MC0;
+	__delay_cycles(1000);
+}
