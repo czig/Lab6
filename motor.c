@@ -10,9 +10,11 @@ void moveLeftWheelForward(void)
 	TA0CTL |= TASSEL1;
 	TA0CCR0 = 100;
 	TA0CCR1 = 50;
-	TA0CCTL0 |= OUTMOD_5;         //Reset mode
+	TA0CCTL0 &= ~(OUTMOD_4|OUTMOD_5); //Clears bits in OUTMOD so no errors when writing a new mode(only modes 4 and 5 used for first pin)
+	TA0CCTL1 &= ~(OUTMOD_7|OUTMOD_5); //Same thing but clears modes 7 and 5 because they are the only ones used on the second pin
+	TA0CCTL0 |= OUTMOD_5;         //Reset mode for ground
 	//TA0CCTL0 &= ~OUT;
-	TA0CCTL1 |= OUTMOD_7;         //reset/set mode
+	TA0CCTL1 |= OUTMOD_7;         //Reset/set mode
 	TA0CTL |= MC0;                //Count up to TACCR0 mode
 	__delay_cycles(1000);
 
@@ -27,6 +29,8 @@ void moveLeftWheelBack(void)
 	//TA0CTL |= TASSEL1;
 	//TA0CCR0 = 100;
 	//TA0CCR1 = 50;
+	TA0CCTL0 &= ~(OUTMOD_4|OUTMOD_5);
+	TA0CCTL1 &= ~(OUTMOD_7|OUTMOD_5);
 	TA0CCTL0 |= OUTMOD_4;         //Toggle output on TACCR0
 	TA0CCTL1 |= OUTMOD_5;
 	//TA0CCTL1 &= ~OUT;
@@ -43,6 +47,8 @@ void moveRightWheelForward(void)
 	TA1CTL |= TASSEL1;
 	TA1CCR0 = 100;
 	TA1CCR1 = 50;
+	TA1CCTL0 &= ~(OUTMOD_4|OUTMOD_5);
+	TA1CCTL1 &= ~(OUTMOD_7|OUTMOD_5);
 	TA1CCTL0 |= OUTMOD_5;
 	//TA1CCTL0 &= ~OUT;
 	TA1CCTL1 |= OUTMOD_7;
@@ -59,13 +65,14 @@ void moveRightWheelBack(void)
 	//TA1CTL |= TASSEL1;
 	//TA1CCR0 = 100;
 	//TA1CCR1 = 50;
+	TA1CCTL0 &= ~(OUTMOD_4|OUTMOD_5);
+	TA1CCTL1 &= ~(OUTMOD_7|OUTMOD_5);
 	TA1CCTL0 |= OUTMOD_4;
 	TA1CCTL1 |= OUTMOD_5;
 	//TA1CCTL1 &= ~OUT;
 	TA1CTL |= MC0;
 	__delay_cycles(1000);
 }
-
 
 void stopLeftWheel(void)
 {
@@ -76,6 +83,8 @@ void stopLeftWheel(void)
 	//TA0CTL |= TASSEL1;
 	//TACCR0 = 100;
 	//TACCR1 = 50;
+	TA0CCTL0 &= ~(OUTMOD_4|OUTMOD_5);
+	TA0CCTL1 &= ~(OUTMOD_7|OUTMOD_5);
 	TA0CCTL0 |= OUTMOD_5;         //Output as specified by Out (cleared in next line - output is zero)
 	TA0CCTL1 |= OUTMOD_5;         //Reset mode
 	//TACCTL1 &= ~OUT;
@@ -92,6 +101,8 @@ void stopRightWheel(void)
 	//TA1CTL |= TASSEL1;
 	//TACCR0 = 100;
 	//TACCR1 = 50;
+	TA1CCTL0 &= ~(OUTMOD_4|OUTMOD_5);
+	TA1CCTL1 &= ~(OUTMOD_7|OUTMOD_5);
 	TA1CCTL0 |= OUTMOD_5;
 	TA1CCTL1 |= OUTMOD_5;
 	//TACCTL1 &= ~OUT;

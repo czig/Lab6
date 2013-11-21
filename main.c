@@ -19,6 +19,12 @@ void main(void) {
 
     moveRightWheelForward();
     moveLeftWheelForward();
+    __delay_cycles(100000);
+    stopRightWheel();
+    stopLeftWheel();
+    __delay_cycles(100000);
+    moveRightWheelBack();
+    moveLeftWheelBack();
 
 
 
