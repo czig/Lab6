@@ -17,14 +17,30 @@ void main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 	
 
+    __delay_cycles(10000000);
     moveRightWheelForward();
     moveLeftWheelForward();
-    __delay_cycles(100000);
+    __delay_cycles(1000000);
     stopRightWheel();
     stopLeftWheel();
-    __delay_cycles(100000);
+    __delay_cycles(1000000);
     moveRightWheelBack();
     moveLeftWheelBack();
+    __delay_cycles(1000000);
+    stopRightWheel();
+    stopLeftWheel();
+    __delay_cycles(1000000);
+    moveRightWheelForward();
+    moveLeftWheelBack();
+    __delay_cycles(300000);
+    stopRightWheel();
+    stopLeftWheel();
+    __delay_cycles(1000000);
+    moveRightWheelBack();
+    moveLeftWheelForward();
+    __delay_cycles(900000);
+    stopRightWheel();
+    stopLeftWheel();
 
 
 
