@@ -1,93 +1,67 @@
+#include <msp430.h>
+#include "motor.h"
+
 void moveLeftWheelForward(void)
 {
 	P1DIR |= BIT1|BIT2;
 	P1SEL |= BIT1|BIT2;
-	TACTL &= ~(MC1|MCO);
-	TACTL |= TACLR;
-	TACTL |= TASSEL1;
-	TACCR0 = 100;
-	TACCR1 = 50;                 //Changed from 40 to 50 to keep a constant 50% duty cycle for every wheel movement
-	TACCTL0 |= OUTMOD_0;         //Output as specified by Out (cleared in next line - output is zero)
-	TACCTL0 &= ~OUT;
-	TACCTL1 |= OUTMOD_3;         //Set/Reset mode
-	TACTL |= MCO;                //Count up to TACCR0 mode
+	TA0CTL &= ~(MC1|MC0);
+	TA0CTL |= TACLR;
+	TA0CTL |= TASSEL1;
+	TA0CCR0 = 100;
+	TA0CCR1 = 50;
+	TA0CCTL0 |= OUTMOD_5;         //Reset mode
+	//TA0CCTL0 &= ~OUT;
+	TA0CCTL1 |= OUTMOD_7;         //reset/set mode
+	TA0CTL |= MC0;                //Count up to TACCR0 mode
+	__delay_cycles(1000);
 
-	//Do something about making a pin ground, and repeat all of this in opposite ways for other functions
 }
 
 void moveLeftWheelBack(void)
 {
-	P1DIR |= BIT1|BIT2;
-	P1SEL |= BIT1|BIT2;
-	TACTL &= ~(MC1|MCO);
-	TACTL |= TACLR;
-	TACTL |= TASSEL1;
-	TACCR0 = 100;
-	TACCR1 = 50;
-	TACCTL0 |= OUTMOD_4;         //Toggle output on TACCR0
-	TACCTL1 |= OUTMOD_0;
-	TACCTL1 &= ~OUT;
-	TACTL |= MCO;
+	//P1DIR |= BIT1|BIT2;
+	//P1SEL |= BIT1|BIT2;
+	TA0CTL &= ~(MC1|MC0);
+	//TA0CTL |= TACLR;
+	//TA0CTL |= TASSEL1;
+	//TA0CCR0 = 100;
+	//TA0CCR1 = 50;
+	TA0CCTL0 |= OUTMOD_4;         //Toggle output on TACCR0
+	TA0CCTL1 |= OUTMOD_5;
+	//TA0CCTL1 &= ~OUT;
+	TA0CTL |= MC0;
+	__delay_cycles(1000);
 }
 
 void moveRightWheelForward(void)
 {
 	P2DIR |= BIT0|BIT1;
 	P2SEL |= BIT0|BIT1;
-	TACTL &= ~(MC1|MCO);
-	TACTL |= TACLR;
-	TACTL |= TASSEL1;
-	TACCR0 = 100;
-	TACCR1 = 50;
-	TACCTL0 |= OUTMOD_0;
-	TACCTL0 &= ~OUT;
-	TACCTL1 |= OUTMOD_3;
-	TACTL |= MCO;
+	TA1CTL &= ~(MC1|MC0);
+	TA1CTL |= TACLR;
+	TA1CTL |= TASSEL1;
+	TA1CCR0 = 100;
+	TA1CCR1 = 50;
+	TA1CCTL0 |= OUTMOD_5;
+	//TA1CCTL0 &= ~OUT;
+	TA1CCTL1 |= OUTMOD_7;
+	TA1CTL |= MC0;
+	__delay_cycles(1000);
 }
 
 void moveRightWheelBack(void)
 {
-	P2DIR |= BIT0|BIT1;
-	P2SEL |= BIT0|BIT1;
-	TACTL &= ~(MC1|MCO);
-	TACTL |= TACLR;
-	TACTL |= TASSEL1;
-	TACCR0 = 100;
-	TACCR1 = 50;
-	TACCTL0 |= OUTMOD_4;
-	TACCTL1 |= OUTMOD_0;
-	TACCTL1 &= ~OUT;
-	TACTL |= MCO;
-}
-
-void stopLeftWheel(void)
-{
-	P1DIR |= BIT1|BIT2;
-	P1SEL |= BIT1|BIT2;
-	TACTL &= ~(MC1|MCO);
-	TACTL |= TACLR;
-	TACTL |= TASSEL1;
-	TACCR0 = 100;
-	TACCR1 = 50;                 //Changed from 40 to 50 to keep a constant 50% duty cycle for every wheel movement
-	TACCTL0 |= OUTMOD_0;         //Output as specified by Out (cleared in next line - output is zero)
-	TACCTL0 &= ~OUT;
-	TACCTL1 |= OUTMOD_0;         //Set/Reset mode
-	TACCTL1 &= ~OUT;
-	TACTL |= MCO;
-}
-
-void stopRightWheel(void)
-{
-	P2DIR |= BIT0|BIT1;
-	P2SEL |= BIT0|BIT1;
-	TACTL &= ~(MC1|MCO);
-	TACTL |= TACLR;
-	TACTL |= TASSEL1;
-	TACCR0 = 100;
-	TACCR1 = 50;
-	TACCTL0 |= OUTMOD_0;
-	TACCTL0 &= ~OUT;
-	TACCTL1 |= OUTMOD_0;
-	TACCTL1 &= ~OUT;
-	TACTL |= MCO;
+	//P2DIR |= BIT0|BIT1;
+	//P2SEL |= BIT0|BIT1;
+	TA1CTL &= ~(MC1|MC0);
+	//TA1CTL |= TACLR;
+	//TA1CTL |= TASSEL1;
+	//TA1CCR0 = 100;
+	//TA1CCR1 = 50;
+	TA1CCTL0 |= OUTMOD_4;
+	TA1CCTL1 |= OUTMOD_5;
+	//TA1CCTL1 &= ~OUT;
+	TA1CTL |= MC0;
+	__delay_cycles(1000);
 }

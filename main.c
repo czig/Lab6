@@ -13,8 +13,18 @@
 /*
  * main.c
  */
-int main(void) {
+void main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 	
-	return 0;
+
+    moveRightWheelForward();
+    moveLeftWheelForward();
+
+
+
+    while(1)
+    {
+
+    }
+
 }
