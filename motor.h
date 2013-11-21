@@ -8,11 +8,28 @@
 #ifndef MOTOR_H_
 #define MOTOR_H_
 
+void initRobot(void);
+
 void moveLeftWheelForward(void);
+
 void moveLeftWheelBack(void);
+
 void moveRightWheelForward(void);
+
 void moveRightWheelBack(void);
+
 void stopLeftWheel(void);
+
 void stopRightWheel(void);
+
+void moveRobotForward(void);
+
+void moveRobotBackward(void);
+
+void turnRobotRight(void);
+
+void turnRobotLeft(void);
+
+void stopRobot(void);
 
 #endif /* MOTOR_H_ */

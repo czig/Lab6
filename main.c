@@ -15,8 +15,8 @@
  */
 void main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
-	
 
+    initRobot();
     __delay_cycles(10000000);
     moveRightWheelForward();
     moveLeftWheelForward();
@@ -41,6 +41,23 @@ void main(void) {
     __delay_cycles(900000);
     stopRightWheel();
     stopLeftWheel();
+
+    //More modular way to run this code
+    //initRobot();
+    //__delay_cycles(5000000);
+    //moveRobotForward();
+    //__delay_cycles(1000000);
+    //stopRobot();
+    //__delay_cycles(1000000);
+    //moveRobotBackward();
+    //__delay_cycles(1000000);
+    //stopRobot();
+    //__delay_cycles(1000000);
+    //turnRobotLeft();
+    //stopRobot();
+    //__delay_cycles(1000000);
+    //turnRobotRight();
+    //stopRobot();
 
 
 
