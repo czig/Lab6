@@ -5,6 +5,12 @@ PWM - "Robot Motion"
 
 This repository includes the files main.c, motor.h, and motor.c, which allow the MSP430 to interface with the motor on the robot to move the robot. Motor.h provides the functions required to operate the motors, while motor.c contains the implementations of those functions. 
 
+##Grading
+
+ - Prelab....................... 15
+ - Required Functionality....... 35
+ - B-Functionality.............. 10
+
 ##Operation: 
 
  - Required Functionality - The robot moves forward, backward, makes a small (less than 45 degrees) turn left and right, and finally makes a large (greater than 45 degrees) turn left and right. The operation of this can be seen in main.c where the delays represent the amount of time that the robot spends performing the previous function. 
