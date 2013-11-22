@@ -20,7 +20,7 @@ void main(void) {
     //increase the delay after the moveRobotForward or moveRobotBackward functions. To turn larger angles,
     //increase the delay after the turnRobotRight or turnRobotLeft functions.
     initRobot();
-    __delay_cycles(3000000);
+    __delay_cycles(3000000); //Delay here to give user time to get robot to floor
     moveRobotForward();
     __delay_cycles(1000000);
     stopRobot();
