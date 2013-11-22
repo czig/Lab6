@@ -1,6 +1,6 @@
 /************************************
  * Author: C2C Caleb Ziegler
- * Date: 17 NOV 13
+ * Date: 21 NOV 13
  * Description: Moves robot forward,
  * backward, right (by an angle less
  * than 45 degrees), and left (by an
@@ -16,48 +16,34 @@
 void main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 
+    //Delays dictate how long each function is executed. To move forward or backward a further distance,
+    //increase the delay after the moveRobotForward or moveRobotBackward functions. To turn larger angles,
+    //increase the delay after the turnRobotRight or turnRobotLeft functions.
     initRobot();
-    __delay_cycles(10000000);
-    moveRightWheelForward();
-    moveLeftWheelForward();
+    __delay_cycles(3000000);
+    moveRobotForward();
     __delay_cycles(1000000);
-    stopRightWheel();
-    stopLeftWheel();
+    stopRobot();
     __delay_cycles(1000000);
-    moveRightWheelBack();
-    moveLeftWheelBack();
+    moveRobotBackward();
     __delay_cycles(1000000);
-    stopRightWheel();
-    stopLeftWheel();
+    stopRobot();
     __delay_cycles(1000000);
-    moveRightWheelForward();
-    moveLeftWheelBack();
+    turnRobotRight();
     __delay_cycles(300000);
-    stopRightWheel();
-    stopLeftWheel();
+    stopRobot();
     __delay_cycles(1000000);
-    moveRightWheelBack();
-    moveLeftWheelForward();
+    turnRobotLeft();
+    __delay_cycles(300000);
+    stopRobot();
+    __delay_cycles(1000000);
+    turnRobotRight();
     __delay_cycles(900000);
-    stopRightWheel();
-    stopLeftWheel();
-
-    //More modular way to run this code
-    //initRobot();
-    //__delay_cycles(5000000);
-    //moveRobotForward();
-    //__delay_cycles(1000000);
-    //stopRobot();
-    //__delay_cycles(1000000);
-    //moveRobotBackward();
-    //__delay_cycles(1000000);
-    //stopRobot();
-    //__delay_cycles(1000000);
-    //turnRobotLeft();
-    //stopRobot();
-    //__delay_cycles(1000000);
-    //turnRobotRight();
-    //stopRobot();
+    stopRobot();
+    __delay_cycles(1000000);
+    turnRobotLeft();
+    __delay_cycles(900000);
+    stopRobot();
 
 
 
